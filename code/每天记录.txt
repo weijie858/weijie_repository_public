@@ -1,0 +1,8 @@
+
+ASP.NET Core 中间件详解及项目实战  https://www.cnblogs.com/savorboard/p/5586229.html
+ASP.NET Core 之 Identity 入门（一） https://www.cnblogs.com/savorboard/p/aspnetcore-identity.html
+Claim 证件单元 ClaimTypes
+ClaimsIdentity:IIdentity   身份证
+ClaimsPrincipal :IPrincipal  证件当事人
+
+057e04526abb93df0f75850c4ab2600f4d9cdcc5  vs同步设置token

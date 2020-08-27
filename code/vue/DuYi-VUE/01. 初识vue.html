@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2020最新Vue零基础到实战【渡一教育】</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{title}}</h1>
+        <p>地址：{{address}}</p>
+        <p>
+            名称:<input type="text" v-model="newProductt.name" /> 库存:<input type="number" v-model="newProductt.stock" />
+            <button @click="addProduct">添加</button>
+        </p>
+        <ul>
+            <li v-for="(item,i) in products" :key="i">
+                {{item.name}} 库存:{{item.stock}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            //配置
+            el: "#app",
+            data: {
+                title: "01. 初识vue",
+                address:
+                    " https://www.bilibili.com/video/BV11z411v7BH?from=search&seid=16606592560061049605",
+                newProductt: {
+                    name: "",
+                    stock: 0,
+                },
+                products: [
+                    { name: "iphoeb", stock: 10 },
+                    { name: "ixiaomi", stock: 6 },
+                    { name: "huawei", stock: 17 },
+                    { name: "sanxing", stock: 7 },
+                ],
+            },
+            methods: {
+                addProduct() {
+                    console.log("add products");
+                    this.products.push({
+                        name:this.newProductt.name,
+                        stock:this.newProductt.stock,
+                    });
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
