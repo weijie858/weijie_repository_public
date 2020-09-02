@@ -1,0 +1,126 @@
+.clear_ly_news{zoom:1;}
+	.clear_ly_news:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+#news-list img{
+		vertical-align: middle;		
+		padding:0;
+		margin:0;
+	}
+	#news-list ul{margin:0;padding:0;}
+	#news-list{
+		color: #004499;
+		margin: 10px auto;
+		font-family: "微软雅黑"
+	}
+	#news-list h3{
+		font-size: 16px;
+		height: 32px;
+		line-height: 32px;
+		color:#004499
+	}
+	#news-list li{
+		height: 24px;
+		line-height: 24px;
+		margin:0;
+	}
+	#news-list li a{
+		color: #585858;
+		font-size: 12px;
+		display:inline;
+		text-decoration: none;
+		padding-left:0;
+		line-height: normal;
+	}
+	#news-list li a:hover{
+		color: #1e50a2;
+		text-decoration: underline;
+	}
+
+
+
+	#news-hot{
+		
+		font-family: "微软雅黑"
+	}
+	#news-hot h2{
+		font-size: 16px;
+		height: 31px;
+		line-height: 30px;
+		color: #248edf;
+		border-bottom: 1px solid #999999;
+	}
+	
+	#news-hot img{
+		vertical-align: middle;
+		margin:0;
+		padding:0;
+	}
+	
+	#news-hot h3 span{
+		color: #004499;
+		display: inline-block;
+		width: 145px;
+		font-size: 16px;
+		border-bottom: 2px solid #248edf;
+	
+	}
+	#news-hot li{
+		height: 24px;
+		line-height: 24px;
+	}
+	#news-hot a{
+		color: #000;
+		font-size: 12px;
+		text-decoration: none;
+		padding-left:0;
+		display:inline;
+	}
+	#news-hot a:hover{
+		color: #1e50a2;
+		text-decoration: underline;
+	}
+
+
+
+	.news-page-menu p{
+		height: 26px;
+		line-height: 26px;
+		font-size: 12px;
+	}
+	.news-page-menu p a:hover{
+		color: #1e50a2;
+		text-decoration: underline;
+	}
+	.news-page-menu{
+		font-size: 12px;
+		width:800px;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding:10px 0;
+	}
+	.news-recommand{
+		margin-top:16px;
+	}
+	.news-recommand h2{
+		font-size: 12px;
+	}
+	.news-recommand ul{
+		width: 800px;
+	}
+	.news-recommand li{
+		width: 350px;
+		height: 28px;
+		line-height: 28px;
+		float: left;
+		font-size: 12px;
+		background: url(images/li-bg.gif) no-repeat left center;
+		padding-left: 10px;
+		/*border-bottom: 1px dashed #e1e1e1;*/
+	}
+	.news-recommand li a:hover{
+		color: #1e50a2;
+		text-decoration: underline;
+	}

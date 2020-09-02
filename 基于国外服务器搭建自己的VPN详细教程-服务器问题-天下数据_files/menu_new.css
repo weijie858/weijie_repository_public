@@ -1,0 +1,72 @@
+@charset "utf-8";
+/* CSS Document */*{margin:0;padding:0;list-style:none;text-decoration:none;border:0;color:#464646;font-style:normal}html{overflow:auto;overflow-x:hidden}.w_1q{width:1100px;margin:0 auto}.top{height:30px}.top p{font-size:18px;color:#686868}.top p samp{color:#e2383a;padding:10px 30px;background:url(img/dh.png) no-repeat left center;margin-left:20px}.top p span{float:right;width:1000px}.top p span i{font-size:15px;padding-right:440px}.top p span i a{color:#f00}.top p span a{padding:0 15px;border-right:1px #c0c0c0 solid;font-size:15px;color:#494949}.top p span a:last-child{border:0}.top p span a:hover{color:#f00}
+.nav_Background{background:url(../img/tp_bg.png);;height:75px;display: block; margin-bottom:10px; }
+.nav_Background .logo{width:220px;float:left;margin-top:7px}
+.logo h1 a img{margin:0}
+.nav_Background .nav_text{width:700px;float:left}
+.nav_Background .nav_text a{width:115px;float:left;height:75px;display:block;color:#fff;font-size:18px;text-align:center;line-height:75px}
+.nav_Background .nav_text img{top: 12px;left: 60px;position: absolute;}
+.nav_Background .nav_text a:hover{height:71px; font-weight:bold; color:#1bccff; background:none; border-bottom:3px solid #1bccff}
+.fugai{padding:20px 0 20px 0;font-size:14px;color:#fff;}
+.fugai a{color:#fff}
+.fugai a:hover{color:#F00}
+/* flexslider banner*/
+.flexslider{position:relative;height:576px;overflow:hidden;background:url(../images/loading.gif) 50% no-repeat; background:#1b2527;}
+.slides{position:relative;z-index:0;}
+.slides li{height:576px;}
+.slides li a{ width:100%; height:100%; display:block;}
+.flex-control-nav{position:absolute;bottom:10px;z-index:2;width:100%;text-align:center;}
+.flex-control-nav li{display:inline-block;width:14px;height:14px;margin:0 5px;*display:inline;zoom:1;}
+.flex-control-nav a{display:inline-block;width:14px;height:14px;line-height:40px;overflow:hidden;background:url(../images/dot.png) right 0 no-repeat;cursor:pointer;}
+.flex-control-nav .flex-active{background-position:0 0;}
+.flex-direction-nav{position:absolute;z-index:3;width:100%;top:45%;}
+.flex-direction-nav li a{display:block;width:70px;height:70px;overflow:hidden;cursor:pointer;position:absolute; background-size:70px;}
+.flex-direction-nav li a.flex-prev{left:40px;background:url(img/left.png) center center no-repeat;}
+.flex-direction-nav li a.flex-next{right:40px;background:url(img/right.png) center center no-repeat;}
+
+.nav_Background .cp_list{ width:100%; height:370px;  background:url(../img/h2.png); position:absolute; top:74px; z-index:9999; left:0px; padding:20px 0;}
+.nav_Background .cp_list dl{ width:142.8px; float:left;}
+.nav_Background .cp_list dl dd{ font-size:16px; font-weight:bold; text-align:left; line-height:40px; height:40px; color:#FFF}
+.nav_Background .cp_list dl dd a{color:#FFF}
+.nav_Background .cp_list dl dt{ font-size:14px; line-height:30px; }
+.nav_Background .cp_list dl dt a{ color:#f3f3f3}
+.nav_Background .cp_list dl dt a:hover{ color:#f00;}
+.nav_Background .cp_list dl dt a.more{ color:#f00; font-size:12px;}
+
+.nav_Background .zz_list{ width:100%; height:370px; background:url(../img/h2.png); position:absolute; top:74px; z-index:9999; left:0px; padding:20px 0;}
+.nav_Background .zz_list dl{ width:142.8px; float:left;}
+.nav_Background .zz_list dl dd{ font-size:16px; font-weight:bold; text-align:left; line-height:40px; height:40px;color:#f3f3f3}
+.nav_Background .zz_list dl dd a{color:#FFF}
+.nav_Background .zz_list dl dt{ font-size:14px; line-height:30px;}
+.nav_Background .zz_list dl dt a{ color:#f3f3f3}
+.nav_Background .zz_list dl dt a:hover{ color:#f00;}
+.nav_Background .zz_list dl dt a.more{ color:#f00; font-size:12px;}
+
+.nav_Background .jj_list{ width:100%; height:370px; background:url(../img/h2.png); position:absolute; top:74px; z-index:9999; left:0px; padding:20px 0;}
+.nav_Background .jj_list dl{ width:160px;height:160px; float:left;margin-right:20px;padding-right:10px;}
+.nav_Background .jj_list dl dd{ font-size:16px; font-weight:bold; text-align:left; line-height:40px; height:40px;color:#f3f3f3}
+.nav_Background .jj_list dl dd a{ color:#f3f3f3}
+.nav_Background .jj_list dl dt{ font-size:14px; line-height:30px;}
+.nav_Background .jj_list dl dt a{ color:#f3f3f3}
+.nav_Background .jj_list dl dt a:hover{ color:#f00;}
+.nav_Background .jj_list dl dt a.more{ color:#f00; font-size:12px;}
+
+.nav_Background .bz_list{ width:100%; height:370px; background:url(../img/h2.png); position:absolute; top:74px; z-index:9999; left:0px; padding:20px 0;}
+.nav_Background .bz_list dl{ width:142.8px; float:left;}
+.nav_Background .bz_list dl dd{ font-size:16px; font-weight:bold; text-align:left; line-height:40px; height:40px;color:#f3f3f3}
+.nav_Background .bz_list dl dd a{ color:#f3f3f3}
+.nav_Background .bz_list dl dt{ font-size:14px; line-height:30px;}
+.nav_Background .bz_list dl dt a{ color:#f3f3f3}
+.nav_Background .bz_list dl dt a:hover{ color:#f00;}
+.nav_Background .bz_list dl dt a.more{ color:#f00; font-size:12px;}
+
+.nav_Background .gy_list{ width:100%; height:370px;  background:url(../img/h2.png); position:absolute; top:74px; z-index:9999; left:0px; padding:20px 0;}
+.nav_Background .gy_list dl{ width:142.8px; float:left;}
+.nav_Background .gy_list dl dd{ font-size:16px; font-weight:bold; text-align:left; line-height:40px; height:40px;color:#f3f3f3}
+.nav_Background .gy_list dl dd a{ color:#f3f3f3}
+.nav_Background .gy_list dl dt{ font-size:14px; line-height:30px; color:#f3f3f3}
+.nav_Background .gy_list dl dt a{ color:#f3f3f3}
+.nav_Background .gy_list dl dt a:hover{ color:#f00;}
+.nav_Background .gy_list dl dt a.more{ color:#f00; font-size:12px;}
+
+

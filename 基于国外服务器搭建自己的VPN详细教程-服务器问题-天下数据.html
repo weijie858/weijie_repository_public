@@ -1,0 +1,1596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0048)https://www.idcbest.com/servernews/11004289.html -->
+<html xmlns="https://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="Cache-Control" content="no-transform"> 
+<meta http-equiv="Cache-Control" content="no-siteapp"> 
+<meta name="applicable-device" content="pc">
+
+
+<script charset="utf-8" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/s.js"></script><script async="" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/analytics.js"></script><script src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hm.js"></script><script language="javascript">
+function showurl(url)
+{
+if (top.showurlinfrm_dtl)
+{
+if ( ! top.canResize )
+			{
+				parent.parent.frm_btm.chgfrm() ;
+				parent.frm_dtl.location.href=url;
+			}
+else
+parent.frm_dtl.location.href=url;			
+}
+else
+location.href=url;
+}
+function confirmit()
+{
+if(confirm("是否确认此操作？"))
+return true;
+else
+return false;
+}
+function formconfirm(confirmstr)
+{
+if(confirm(confirmstr))
+return true;
+else
+return false;
+}
+function urlconfirm(confirmstr,url)
+{
+if(confirm(confirmstr))
+location.href=url;
+}
+function tourl(myurl)
+{
+if(confirm("是否确认此操作？"))
+location.href=myurl;
+else
+return false;
+}
+function tofrmsite(frmsite)
+{
+if((frmsite!='mastersite')&&frmsite!="")
+showurl('/master/pdtmng/hst_mng/hst_idx.asp?hnme='+frmsite);
+else
+alert("您打开的是本站点!");
+}
+function   getnamestring(tempitem)
+{
+tempitem.value="";
+for (var i=0;i<pdtfrm.namestring.length;i++)
+{
+if(pdtfrm.namestring[i].checked)
+tempitem.value=tempitem.value+","+pdtfrm.namestring[i].value;
+}
+}
+function gettarget(frmid)
+{
+if (top.showurlinfrm_dtl)
+{
+if ( ! top.canResize )
+			{
+				parent.parent.frm_btm.chgfrm() ;
+				frmid.target="frm_dtl";
+			}
+else
+frmid.target="frm_dtl";
+}
+else
+frmid.target="";
+}
+function submitfrm(frmid)
+{
+frmid=eval(frmid);
+gettarget(frmid);
+frmid.submit();
+}
+
+var oldid=0;
+function showmytab(nowid){
+  if(nowid!=oldid){
+    mytabsitm[oldid].className='showtab01';
+    mytabsitm[nowid].className='showtab02';
+    mytabs[oldid].style.display='none';
+    mytabs[nowid].style.display='';
+    oldid=nowid;
+  }
+}
+
+</script>
+ 
+
+<meta name="mobile-agent" content="format=html5; url=https://wap.idcbest.com/servernews/11004289.html">
+<title>基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据</title>
+<meta name="keywords" content="vpn,国外服务器,私人vpn,shadowsocks">
+<meta name="description" content="很多工作上生活上我们都需要翻墙，但是现在的第三方各种原因都不那么好用了，这里天下数据小编就来跟大家分享下如何利用海外服务器安装Shadowsocks Server搭建自己私人VPN。">
+<link href="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/list.css" rel="stylesheet" type="text/css">
+<link href="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/css2.css" type="text/css" rel="stylesheet">
+<script src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/jquery-1.7.2.min.js" type="text/javascript"></script><style type="text/css"></style>
+<link rel="alternate" media="only screen and (max-width: 640px)" href="https://wap.idcbest.com/servernews/11004289.html">
+<link rel="canonical" href="https://www.idcbest.com/servernews/11004289.html">
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"><link href="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_idx.css" rel="stylesheet" type="text/css"><script src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/jquery-1.7.2.min.js"></script><script type="text/javascript" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/superslide.2.1.js"></script><link href="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/menu_new.css" rel="stylesheet" type="text/css"><link href="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/ly_news.css" rel="stylesheet" type="text/css"><script src="https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=+~(-new%20Date()/36e5)"></script><style>html #hm_t_undefined .hm-t-go-top {position:fixed;right:2px;bottom:2px;z-index:99998;cursor:pointer;width:40px;height:37px!important;text-align:center;white-space:normal;font-size:14px;line-height:17px;padding-top:3px;color:#fff;background:#404040;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAXCAYAAABH92JbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowMjgwMTE3NDA3MjA2ODExODA4M0UyNDA4ODdDRTZBQiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBQjc5RkRFNkI5ODMxMUUzQkZGNDhENEJFQjM2OTcyRiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBQjc5RkRFNUI5ODMxMUUzQkZGNDhENEJFQjM2OTcyRiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MDI4MDExNzQwNzIwNjgxMTgwODNFMjQwODg3Q0U2QUIiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDI4MDExNzQwNzIwNjgxMTgwODNFMjQwODg3Q0U2QUIiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5HPYM5AAACC0lEQVR42uyZTSgEYRjH90NoqaVcpDblvKW2XOSkNh8H5Yac9sBBDqQokiJKSMpNTi5OPo6Ktsgu67JcUHIXWfK1u3b8Xx6Zxuzu+64dM83uv34zNfu8b8/8Z+d5P8YqSZLFJNLsRmyWvIRMKgVD4AhEwA3YAV0pzGwEqyAEwmAddIICHe7FqhnsdQM14FxKLj+ooFiGE2ykiD8GVbJ4I1ELAnTmasMODnAhpVcIFIMicMgRH6Z4IxnUAh4pP3Zu5TVpUOLXDJgWiB8wkEF9IK7IL07X05oUFLjpZ4JXQQOYYwfzafJcoDjVPqw43KE4lWtUTF+AQ8eBqQSsgTaO2E0apJ7URrdCDZOM62hQJfBzGmShOD+1+2XSiYaJ7utkkBsEgEewnYfauZUmzWmU6DuY0sEgLzgArgzbu6i992cu/1WclqXsa1iHIt0DYlnKP0b9fRZu5pWdZs7dWXqa7B80+s//oF5aMSjflGqBPq5BQnFtVv4UmGHjIPEH96PAZ6C5kVMwf6daPzbFKnqCqvx9Bk/yFjSBFTMvcL+1DerAmUA/p9Rm1+y7AHJdgnqwx9EHm1s0gKtc2CpR6gE00/ZHMm3RKxbJlf0kNb2BDrCk8hsbDdvBay5tuiUTGxL7waTs2iLw0YTR9BLZQRwDUVqwjuTS9q3VRB8C1OQUnM6UqdXX/IcADn0IMADs2AqDOPSutQAAAABJRU5ErkJggg==) no-repeat -42px center #666;*background-image:url(http://ecma.bdimg.com/holmes/t-popup-icons-png8.png);_position:absolute;_top:expression(eval(document.documentElement.scrollTop+(document.documentElement.clientHeight||document.body.clientHeight)-this.offsetHeight-2));}</style></head>
+<!-- 导航开始 -->
+<!-------头部开始------------>
+ 
+
+
+
+
+
+<body>
+	<div class="menu_top" style="background: rgb(25, 25, 25); top: 0px; height: 102px;">
+        <div class="wx_box" style="display: block;">
+        	<div class="wx_call"><p class="call_400">400-638-8808</p><p class="jge">|</p><p class="wx">微信公众号<span class="erwm"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/idx_erwm.jpg" width="116" height="116"></span></p></div>
+        </div>
+    	<div class="menu_box" style="">
+        	<div class="menu_cn">
+            	<div class="meu_lf" id="nav">
+                	<ul>
+                    <li class="meu_lg"><a href="https://www.idcbest.com/"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/idx_logo.png" width="109" height="30"></a></li>
+                    <li id="hd_xl"><a href="https://www.idcbest.com/2016/" class="cx activ">最新活动</a>
+                    <div class="newhd_list">
+     					<div class="list_bg"></div>
+     					<div class="lst_cp">
+                        	<div class="newhd_nr">
+                            <b>最新活动</b>
+                           <div>
+                          <p><a href="https://www.idcbest.com/2020/55.asp" target="_blank"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/55fwq.jpg" width="304" height="164" alt="全球云服务器特惠"></a></p>
+                            <p><a href="https://www.idcbest.com/2020/88.asp" target="_blank"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/zchy.jpg" width="304" height="164" alt="100M CN2线路"></a></p>
+                            <p><a href="https://www.idcbest.com/2019/zq_gq.asp" target="_blank"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/CDN.jpg" width="304" height="164" alt="高防cdn"></a></p>
+                            </div>
+                            <div class="clear"><a href="https://www.idcbest.com/2016/" target="_blank">更多活动</a></div>
+                            </div>
+                        </div>
+                    </div>
+                   </li>
+                    <li id="cp_xl"><a href="https://www.idcbest.com/server/" class="cp activ">产品中心</a>
+      <div class="cp_list">
+     	<div class="list_bg"> </div>
+     	<div class="lst_cp">
+            <div class="hot_cp">
+            	<div class="hotcp"><p style="color:#f15533">热门产品：</p><p><a href="https://www.idcbest.com/2020/711.asp" target="_blank">香港hs服务器限时75折</a></p><p><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" target="_blank" rel="nofollow">DDoS高防IP</a></p><p><a href="https://www.idcbest.com/2018/qukl.asp" target="_blank">区块链+行业方案</a></p><p><a href="https://www.idcbest.com/2020/55.asp" target="_blank">55元爆款云</a></p></div>
+            </div>
+                <div class="clear"></div>
+        	<div class="lst_cpnr">
+           <ul id="xl_meu" class="list_lf">
+           <li id="xl1" class="activ2"> <a onmouseover="javascript:indxla(1)" class="fwqzy" href="https://www.idcbest.com/2018/hkdx.asp" target="_blank">服务器租用</a></li>
+           <li id="xl2">  <a onmouseover="javascript:indxla(2)" class="yfwq" href="https://www.idcbest.com/vps/">云服务器</a></li>
+           <li id="xl3">  <a onmouseover="javascript:indxla(3)" class="ymkj" href="https://www.idcbest.com/server/server_bk.asp">高防专线</a></li>
+           <li id="xl4">  <a onmouseover="javascript:indxla(4)" class="fwqtg" href="https://www.idcbest.com/idc/">服务器托管</a></li>
+           <li id="xl5">  <a onmouseover="javascript:indxla(5)" class="fwqdw" href="https://www.idcbest.com/2019/idc_gn.asp">数据中心</a></li>
+           <li id="xl6">  <a onmouseover="javascript:indxla(6)" class="qyyj" href="https://www.idcbest.com/email/">域名邮箱</a></li>
+            </ul>
+            <div class="list_rf">
+            	<ul id="la1" class="lsrf_zy" style="display:block;">
+               		<li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">亚洲服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160" style="position: relative;">
+                           <a href="https://www.idcbest.com/2020/guonei.asp">大陆服务器租用</a>
+                           <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_new.png" style="position: absolute;top:-6px;right:35px;width:24px">
+                        </td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_fs.asp">大陆高防服务器</a></td> 
+                        <td width="160" style="position: relative;">
+                         <a href="https://www.idcbest.com/2018/hkdx.asp" target="_blank">香港电信服务器</a>
+                         <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_hot.png" style="position: absolute;top:-6px;right:34px;width:24px">
+                         </td>   
+                        <td width="160"><a href="https://www.idcbest.com/2016/march.asp" target="_blank">香港自建机房服务器</a></td> 
+                        <td width="160"><a href="https://www.idcbest.com/server/server_xghs.asp" target="_blank">香港HS机房服务器</a></td>                           
+                        <td width="160" style="position: relative;"><a href="https://www.idcbest.com/2020/aly.asp" target="_blank">阿里云香港大带宽服务器</a>
+                        <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_new.png" style="position: absolute;top:-6px;right:-25px;width:24px"></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/" target="_blank">香港服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_xgzq.asp">香港站群服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_bk.asp">香港高防服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_xgst.asp">香港沙田服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_hg.asp">韩国服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_rb.asp">日本服务器</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_xjp.asp">新加坡服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_tw.asp">台湾服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_yn.asp">印度尼西亚服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_db.asp">阿联酋迪拜服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_bjst.asp">巴基斯坦服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_teq.asp">土耳其服务器</a></td>   
+                      </tr>
+                        <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_yuenan.asp">越南服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_mlxy.asp">马来西亚服务器</a></td>  
+                        <td width="160"><a href="https://www.idcbest.com/server/server_tg.asp">泰国服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_hskst.asp">哈萨克斯坦服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_jpz.asp">柬埔寨服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_ph.asp">菲律宾服务器</a></td>
+                      </tr>
+                        <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_yd.asp">印度服务器</a></td>
+                      </tr>
+                         </tbody></table>
+                     </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">美洲服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_jz.asp">美国洛杉矶机房</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_san.asp">美国圣安娜机房</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/wap/usahs.asp" target="_blank">美国圣何塞机房</a></td>                        
+                        <td width="160"><a href="https://www.idcbest.com/server/server_dls.asp">美国达拉斯机房</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_c3.asp">美国C3服务器租用</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_zq.asp">美国站群服务器</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_Miami.asp">美国迈阿密服务器租用</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2016/usa_fwq/usa_fuq.asp">美国无限防御服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_jnd.asp">加拿大服务器租用</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_bx.asp">巴西服务器租用</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_bnm.asp">巴拿马服务器租用</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_gsdlj.asp">哥斯达黎加服务器</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">欧洲服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_fg.asp">法国服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_ydl.asp">意大利服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_dg.asp">德国服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_yg.asp">英国服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_hl.asp">荷兰服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_els.asp">俄罗斯服务器</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_bls.asp">比利时服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_teq.asp">土耳其服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_bolan.asp">波兰服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_xibanya.asp">西班牙服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_ruishi.asp">瑞士服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_jieke.asp">捷克服务器</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_litaowan.asp">立陶宛服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_maqita.asp">马其他服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_baojialiya.asp">保加利亚服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_saipulusi.asp">塞浦路斯服务器</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="2" class="lsrf_tle">非洲服务器</td>
+                        <td colspan="1" class="lsrf_tle">大洋洲服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_aj.asp">埃及服务器 </a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_nf.asp">南非服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/server/server_az.asp">澳洲服务器</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                </ul>
+            <!--云服务器 -->   
+                       <ul id="la2" class="lsrf_zy" style="display:none;">
+                     <!--<li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td colspan="6" class="lsrf_tle" style="position: relative;">动态拨号VPS
+                       <img src="../img/hk_new.png" style="position: absolute;top:-6px;right:372px;width:24px">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/2019/hwvps.asp" target="_blank">海外动态拨号vps</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/gnvps.asp" target="_blank">国内动态拨号vps</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/hunvps.asp" target="_blank">混合动态拨号vps</a></td>
+                      </tr>
+                    </table>
+                  </li> -->
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">亚洲云服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_xg.asp">香港云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#dalu">大陆云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_xjp.asp">新加坡云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_hg.asp">韩国云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_rb.asp">日本云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#taiguo">泰国云服务器</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#yuenan">越南云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#malai">马来西亚云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#yindu">印度云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#yinni">印度尼西亚云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_tw.asp">台湾云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#dibai">阿联酋迪拜云服务器</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#bajisitan">巴基斯坦云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#tuerqi">土耳其云服务器</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">美洲云服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mg.asp">美国云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#jianada">加拿大云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mg.asp">美国站群云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mggg.asp">美国芝加哥云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mgmam.asp">美国迈阿密云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mgxyt.asp">美国西雅图云服务器</a></td>
+                      </tr>
+                         <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mgytld.asp">美国亚特兰大云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mgdls.asp">美国达拉斯云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mggg.asp">美国洛杉矶云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mgny.asp">美国纽约云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_mggg.asp">美国硅谷云服务器</a></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">欧洲云服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_fg.asp">法国云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#yidali">意大利云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_dg.asp">德国云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_yg.asp">英国云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_hl.asp">荷兰云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#eluosi">俄罗斯云服务器</a></td>
+                      </tr>
+                     
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="1" class="lsrf_tle">非洲云服务器</td>
+                        <td colspan="1" class="lsrf_tle">大洋洲云服务器</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/vps/quanqiuyun.asp#aiji">埃及云服务器 </a></td>
+                        <td width="160"><a href="https://www.idcbest.com/vps/vps_az.asp">澳洲云服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/yqd.asp" style="font-weight:bold;color:#e80101" target="_blank">阿里云</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/yqd.asp" style="font-weight:bold;color:#e80101" target="_blank">腾讯云</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/yqd.asp" style="font-weight:bold;color:#e80101" target="_blank">华为云</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                </ul> 
+            <!--域名空间-->              
+            <ul id="la3" class="lsrf_zy" style="display:none;">
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="5" class="lsrf_tle">海外高防系列</td>
+                      </tr>
+                      <tr>
+                         <td width="160" style="position: relative;"><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" target="_blank" rel="nofollow">海外高防IP</a>
+                           <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_hot.png" style="position: absolute;top:-6px;right:58px;width:24px"></td>
+                        <td width="160"><a href="https://www.idcbest.com/wap/usahs.asp">美国圣何塞高防</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2018/sept.asp">美国高防限时活动</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2016/usa_fwq/usa_fuq.asp">海外无限防御</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2017/51ldj.asp">香港高防10G</a></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="2" class="lsrf_tle">安全防御</td>
+                      </tr>
+                      <tr>
+                    <td width="160" style="position: relative;">
+                           <a href="https://www.idcbest.com/2019/waf.asp">WEB应用防火墙</a>
+                           <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_new.png" style="position: absolute;top:-6px;right:35px;width:24px">
+                        </td>
+ 
+                        <td width="160" style="position: relative;">
+<a href="https://www.idcbest.com/2019/pt.asp">高级渗透服务</a>
+<img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_hot.png" style="position: absolute;top:-6px;right:52px;width:24px">
+</td>                     
+                        <td width="160"><a href="https://www.idcbest.com/2018/ssl.asp">SSL证书</a></td>
+                        <td width="160" style="position: relative;"><a href="https://www.idcbest.com/2019/zq_gq.asp" target="_blank">高防CDN套餐</a>
+                          <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_new.png" style="position: absolute;top:-6px;right:42px;width:24px"></td>
+                        <td width="160"><a href="https://www.idcbest.com/2017/Txsjcdn.asp">全球CDN节点定制</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="5" class="lsrf_tle">全球专线系列</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" target="_blank" rel="nofollow">全球点对点专线GPLC</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2018/hkdx.asp" target="_blank">香港电信机房直连大陆</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2020/aly.asp" target="_blank">香港阿里云大带宽服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/wap/usahs.asp" target="_blank">美国CN2线路直连大陆</a></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table class="xl_khal_lst" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="11" class="lsrf_tle"><a href="https://www.idcbest.com/about/about_khal.asp">客户案例分享</a></td>
+                      </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_7.png" alt="光大银行"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_7.png"></a></td>                
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_3.png" alt="中国平安"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_3.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_5.png" alt="京东"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_5.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_20.png" alt="中国能源"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_20.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_65.png" alt="oppo"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_65.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_66.png" alt="中国石化"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_66.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                      </tr>
+                     <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_13.png" alt="西部数据"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_13.png"></a></td>                     
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_12.png" alt="申通快递"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_12.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_14.png" alt="沙河股份"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_14.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_15.png" alt="康佳"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_15.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_67.png" alt="创维"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_67.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>   
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_16.png" alt="卡西欧"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_16.png"></a></td>
+                     </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    </tbody></table>
+                  </li>
+                  
+                </ul> 
+            <!--服务器托管-->              
+            <ul id="la4" class="lsrf_zy" style="display:none;">
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">全球服务器托管</td>
+                      </tr>
+                      <tr>
+                 <td width="160" style="position: relative;"><a href="https://www.idcbest.com/2019/idc_gn.asp">国内服务器托管</a><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/hk_new.png" style="position: absolute;top:-6px;right:12px;width:24px"></td>
+                        <td width="160"><a href="https://www.idcbest.com/idc/idc_sz.asp">深圳服务器托管</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/idc/idc_xgxsj.asp">香港新世界托管</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/idc/idc_xgdyx.asp">香港第一线托管</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/idc/idc_tw.asp">台湾服务器托管</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/idc/">美国服务器托管</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/idc/">香港服务器托管</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table class="xl_khal_lst" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="11" class="lsrf_tle"><a href="https://www.idcbest.com/about/about_khal.asp">客户案例分享</a></td>
+                      </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_7.png" alt="光大银行"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_7.png"></a></td>                
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_3.png" alt="中国平安"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_3.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_5.png" alt="京东"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_5.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_20.png" alt="中国能源"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_20.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_65.png" alt="oppo"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_65.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_66.png" alt="中国石化"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_66.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                      </tr>
+                     <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_13.png" alt="西部数据"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_13.png"></a></td>                     
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_12.png" alt="申通快递"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_12.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_14.png" alt="沙河股份"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_14.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_15.png" alt="康佳"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_15.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_67.png" alt="创维"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_67.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>   
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_16.png" alt="卡西欧"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_16.png"></a></td>
+                     </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    </tbody></table>
+                  </li>
+                </ul>  
+            <!--服务器代维-->              
+            <ul id="la5" class="lsrf_zy" style="display:none;">
+                       <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">华南数据中心</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/2019/hnsz.asp" target="_blank">深圳坂田数据中心</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/hngz.asp" target="_blank">广州软件园数据中心</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/hnzs.asp" target="_blank">睿江中山数据中心</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/hnfs.asp" target="_blank">佛山德胜数据中心</a></td>
+                      </tr>
+                    </tbody></table>
+
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:15px">
+                     <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">华东数据中心</td>
+                                         </tr>
+                                         <tr>
+                   <td width="160"><a href="https://www.idcbest.com/2019/hdsh.asp" target="_blank">上海周浦数据中心</a></td>
+                   <td width="160"><a href="https://www.idcbest.com/2019/hdcz.asp" target="_blank">常州数据中心（电信）</a></td>
+                   <td width="160"><a href="https://www.idcbest.com/2019/hdnb.asp" target="_blank"> 宁波数据中心</a></td>
+                   <td width="160"><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" rel="nofollow" target="_blank">宿迁移动高防机房</a></td>
+                                      </tr>
+                                     </tbody></table>
+                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:15px">
+                                      <tbody><tr>
+                                               <td colspan="6" class="lsrf_tle">华北数据中心</td>
+                                         </tr>
+                                         <tr>
+                         <td width="160"><a href="https://www.idcbest.com/2019/hbbj.asp" target="_blank">北京亦庄（大族）数据中心</a></td>
+                         <td width="160"><a href="https://www.idcbest.com/2019/hbsd.asp" target="_blank"> 山东潍坊数据中心</a></td>
+                                      </tr>
+                                      </tbody></table>
+
+                                     <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:15px">
+                                       <tbody><tr>
+                                               <td colspan="6" class="lsrf_tle">西部数据中心</td>
+                                         </tr>
+                                         <tr>
+                  <td width="160"><a href="https://www.idcbest.com/2019/xbsc.asp" target="_blank">四川易通德阳数据中心</a></td>
+                    <td width="160"> <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" rel="nofollow" target="_blank">德阳电信高防机房</a></td>                  
+                    <td width="160"> <a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" rel="nofollow" target="_blank">成都电信高防机房</a></td>   
+                                      </tr>
+                                      </tbody></table>
+                  </li>
+
+                    <li>
+                    <table class="xl_khal_lst" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="11" class="lsrf_tle"><a href="https://www.idcbest.com/about/about_khal.asp">客户案例分享</a></td>
+                      </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_7.png" alt="光大银行"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_7.png"></a></td>                
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_3.png" alt="中国平安"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_3.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_5.png" alt="京东"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_5.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_20.png" alt="中国能源"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_20.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_65.png" alt="oppo"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_65.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_66.png" alt="中国石化"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_66.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                      </tr>
+                     
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    </tbody></table>
+                  </li>
+                </ul>   
+            <!--企业邮局-->              
+                <ul id="la6" class="lsrf_zy" style="display:none;">
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="5" class="lsrf_tle">全球域名</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/domain/domain_yz.asp">亚洲域名</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/domain/domain_oz.asp">欧洲域名</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/domain/domain_dyz.asp">大洋洲域名</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/domain/domain_fz.asp">非洲域名</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/domain/domain_mz.asp">美洲域名</a></td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/domain/domain_js.asp">全球域名价格</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/domain/">whois查询</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li style="margin-bottom:0px;">
+                    <table class="ymkj_tab" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td width="120" height="45" bgcolor="#1b1b1b">.com<span>75</span><i>元/年</i></td>
+                        <td width="10" height="45"></td>
+                        <td width="120" height="45" bgcolor="#1b1b1b">.cn<span>75</span><i>元/年</i></td>
+                        <td width="10" height="45"></td>
+                        <td width="120" height="45" bgcolor="#1b1b1b">.wang<span>58</span><i>元/年</i></td>
+                        <td width="10" height="45"></td>
+                        <td width="120" height="45" bgcolor="#1b1b1b">.me<span>246</span><i>元/年</i></td>
+                        <td width="10" height="45"></td>
+                        <td width="120" height="45" bgcolor="#1b1b1b">.cc<span>138</span><i>元/年</i></td>
+                        <td width="10" height="45"></td>
+                        <td width="120" height="45" bgcolor="#1b1b1b">.hk<span>380</span><i>元/年</i></td>
+                      </tr>
+                      <tr>
+                        <td colspan="11" class="ymfw"><b>域名增值服务：</b><i>免费域名解析</i><i>免费域名证书</i><i>免费whois信息保密</i></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">企业邮箱 </td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/email/email_wuyou.asp">无忧企业邮箱</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/email/email_163.asp">尚易企业邮箱</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/email/email_Aboard.asp">外贸企业邮箱</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li class="xl_qyyx">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td class="lsrf_tle" colspan="6">企业邮箱6大优势</td>
+                      </tr>
+                    </tbody></table>
+                    <div class="qyyx_ys">
+                        <dl>
+                        <dd><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/cpxl_yoju1.png" width="66" height="65"><p>稳定可靠 永不间断</p></dd>
+                        <dd><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/cpxl_yoju2.png" width="76" height="60"><p>海外收发 畅通无阻</p></dd>
+                        <dd><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/cpxl_yoju3.png" width="59" height="58"><p>协同办公 资源管理</p></dd>
+                        <dd><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/cpxl_yoju4.png" width="69" height="58"><p>超大邮件 超级功能</p></dd>
+                        <dd><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/cpxl_yoju5.png" width="68" height="63"><p>智能反垃圾邮件技术</p></dd>
+                        <dd><img style="width:12%;" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/cpxl_yoju6.png" width="45" height="58"><p>易管理 免维护</p></dd>
+                      </dl>
+                    </div>
+                    <div class="clear"></div>
+                  </li>
+                  
+                  
+                </ul>        
+                </div>
+            </div>
+        </div>
+     
+     </div>
+         </li>
+                    <li id="jj_xl"><a href="https://www.idcbest.com/solution/solution1.asp" class="jj activ">解决方案</a>
+<div class="jj_list">
+     	<div class="list_bg"> </div>
+     	<div class="lst_cp">
+        	<div class="lst_cpnr">
+            <div class="list_rf">
+            	<ul id="c1" class="lsrf_zy" style="display:block;">
+               		<li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">行业解决方案</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/2019/zq_gq.asp" target="_blank">高防CDN解决方案</a></td>                        <td width="160"><a href="https://www.idcbest.com/2018/wxxcx.asp" target="_blank">小程序</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2018/qukl.asp" target="_blank">区块链解决方案</a></td>  
+                        <td width="160"><a href="https://www.idcbest.com/2018/bquan.asp" target="_blank">币圈抗D加速</a></td>    
+                        <td width="160"><a href="https://www.idcbest.com/2018/iot.asp" target="_blank">物联网解决方案</a></td> 
+                        <td width="160"><a href="https://www.idcbest.com/2018/jiaju.asp">智能家居解决方案</a></td>       
+
+                     
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution2.asp">互联网金融</a></td>                        <td width="160"><a href="https://www.idcbest.com/solution/solution5.asp">流媒体</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2020/game.asp" target="_blank">游戏解决方案</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution6.asp">海外游戏</a></td>    
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution1.asp" target="_blank">直销行业</a></td>                        <td width="160"><a href="https://www.idcbest.com/solution/solution14.asp">电子商务类网站</a></td>  
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution15.asp">新零售</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution8.asp">服务器安全</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution9.asp">加速网站访问</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution12.asp">站群服务器</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution3.asp">数据库集群</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution4.asp">数据库高可用</a></td>
+                      </tr>
+                      <tr> 
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution7.asp">负载均衡</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution10.asp">小型网站rsync数据同步</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution11.asp">小型网站建立</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/solution/solution1.asp">更多</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>                     
+                         </tr>
+                    </tbody></table>
+                    </li>
+                    <li>
+                    <table class="xl_khal_lst" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="11" class="lsrf_tle"><a href="https://www.idcbest.com/about/about_khal.asp">客户案例分享</a></td>
+                      </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_7.png" alt="光大银行"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_7.png"></a></td>                
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_3.png" alt="中国平安"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_3.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_5.png" alt="京东"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_5.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_20.png" alt="中国能源"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_20.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_65.png" alt="oppo"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_65.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_66.png" alt="中国石化"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_66.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                      </tr>
+                     <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_13.png" alt="西部数据"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_13.png"></a></td>                     
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_12.png" alt="申通快递"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_12.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_14.png" alt="沙河股份"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_14.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_15.png" alt="康佳"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_15.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_67.png" alt="创维"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_67.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>   
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_16.png" alt="卡西欧"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_16.png"></a></td>
+                     </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    </tbody></table>
+                  </li>
+                  </ul>                
+                  </div>
+            </div>
+        </div>
+     
+     </div>                 
+      				</li>
+                    <li id="fw_xl"><a href="https://www.idcbest.com/zzcp/" class="fw activ">服务</a>
+<div class="fw_list">
+     	<div class="list_bg"> </div>
+     	<div class="lst_cp">
+        	<div class="lst_cpnr">
+            <div class="list_rf">
+            	<ul id="c1" class="lsrf_zy" style="display:block;">
+                     <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">服务器代维套餐</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp#web" rel="nofollow">Web服务器基础套餐</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp#web1" rel="nofollow">高级应用安全服务套餐</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp#web2" rel="nofollow">机柜代维套餐</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp#web3" rel="nofollow">办公场所网络代维</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp#web4" rel="nofollow">服务器代维服务项目</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+               		<li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">渠道代理服务</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/agent.asp#E" rel="nofollow">我们的优势</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/agent.asp#A" rel="nofollow">代理平台模式</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/agent.asp#D" rel="nofollow">代理申请流程</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/agent.asp#C" rel="nofollow">代理加盟条件</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/agent.asp#B" rel="nofollow">返款奖励模式</a></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">CRM系统</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/crm_cp01.asp">CRM客户管理系统</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/crm_cp02.asp">人事代理管理系统</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/crm_cp04.asp">贸易管理系统</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/crm_cp03.asp">销售管理系统</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/crm_cp05.asp">金盾抗拒绝服务系统</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/zzcp/crm_cp06.asp">营销费用管理系统</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">解决方案免费定制</td>
+                      </tr>
+                    </tbody></table>
+                    <div class="fwxl_jfan">
+                    <dl>
+                    	<dd><p class="fwxl_icn1"></p><p class="fwxl_jftx"><b>直销</b>解决方案</p><a href="https://www.idcbest.com/solution/solution1.asp"></a></dd>
+                    	<dd><p class="fwxl_icn2"></p><p class="fwxl_jftx"><b>直播</b>解决方案</p><a href="https://www.idcbest.com/2016/vod.asp"></a></dd>
+                    	<dd><p class="fwxl_icn3"></p><p class="fwxl_jftx"><b>金融</b>解决方案</p><a href="https://www.idcbest.com/solution/solution2.asp"></a></dd>
+                    	<dd><p class="fwxl_icn4"></p><p class="fwxl_jftx"><b>流媒体</b>解决方案</p><a href="https://www.idcbest.com/solution/solution5.asp"></a></dd>
+                    	<dd><p class="fwxl_icn5"></p><p class="fwxl_jftx"><b>游戏</b>解决方案</p><a href="https://www.idcbest.com/solution/solution6.asp"></a></dd>
+                    	<dd><p class="fwxl_icn6"></p><p class="fwxl_jftx"><b>电商</b>解决方案</p><a href="https://www.idcbest.com/solution/solution14.asp"></a></dd>
+                    </dl>
+                    <div class="clear"></div>
+                    </div>
+                  </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+     
+     </div>                    
+           </li>
+                    
+                    <li id="js_xl">
+                    <a href="https://www.idcbest.com/2019/dell_yjian.asp" class="js activ">硬件设备</a>
+<div class="js_list">
+     	<div class="list_bg"> </div>
+     	<div class="lst_cp">
+        	<div class="lst_cpnr">
+            <div class="list_rf">
+            	<ul id="c1" class="lsrf_zy" style="display:block;">
+                
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">服务器硬件</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/2019/Dell_R630.asp">DELL R630</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/Dell_R730.asp">DELL R730</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/Dell_R730XD.asp">DELL R730XD</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/Dell_R440.asp">DELL R440</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/Dell_R640.asp">DELL R640</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/2019/Dell_R740.asp">DELL R740</a></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">技术支持</td>
+                      </tr>
+                      <tr>
+                        <td width="160"><a href="https://www.idcbest.com/idcnews/">行业新闻</a></td>                      
+                        <td width="160"><a href="https://www.idcbest.com/servernews/">服务器租用知识</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/datanews/">美国服务器问题</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/cloundnews/">云服务器知识</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/domainnews/">域名相关问题</a></td>
+                        <td width="160"><a href="https://www.idcbest.com/jjfanews/">解决方案问题</a></td>
+                        <td width="160"></td>
+                        <td width="160"></td>
+                      </tr>
+                    </tbody></table>
+                  </li>
+
+                    
+                    <li>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="6" class="lsrf_tle">解决方案免费定制</td>
+                      </tr>
+                    </tbody></table>
+                    <div class="fwxl_jfan">
+                    <dl>
+                    	<dd><p class="fwxl_icn1"></p><p class="fwxl_jftx"><b>直销</b>解决方案</p><a href="https://www.idcbest.com/solution/solution1.asp"></a></dd>
+                    	<dd><p class="fwxl_icn2"></p><p class="fwxl_jftx"><b>直播</b>解决方案</p><a href="https://www.idcbest.com/2016/vod.asp"></a></dd>
+                    	<dd><p class="fwxl_icn3"></p><p class="fwxl_jftx"><b>金融</b>解决方案</p><a href="https://www.idcbest.com/solution/solution2.asp"></a></dd>
+                    	<dd><p class="fwxl_icn4"></p><p class="fwxl_jftx"><b>流媒体</b>解决方案</p><a href="https://www.idcbest.com/solution/solution5.asp"></a></dd>
+                    	<dd><p class="fwxl_icn5"></p><p class="fwxl_jftx"><b>游戏</b>解决方案</p><a href="https://www.idcbest.com/solution/solution6.asp"></a></dd>
+                    	<dd><p class="fwxl_icn6"></p><p class="fwxl_jftx"><b>电商</b>解决方案</p><a href="https://www.idcbest.com/solution/solution14.asp"></a></dd>
+                    </dl>
+                    <div class="clear"></div>
+                    </div>
+                  </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+     
+     </div>
+                    </li>
+
+                    <li id="me_xl"><a href="https://www.idcbest.com/about/" class="gy activ">关于我们</a>
+<div class="me_list">
+     	<div class="list_bg"> </div>
+     	<div class="lst_cp">
+        	<div class="lst_cpnr">
+            <div class="list_rf">
+            	<ul id="c1" class="lsrf_zy" style="display:block;">
+                    <li>
+                    <div class="xlme_lf">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="4" class="lsrf_tle">关于我们</td>
+                      </tr>
+                      <tr>
+                        <td width="120"><a href="https://www.idcbest.com/about/">公司简介</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/about_fzlc.asp">发展历程</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/2017/mtxsj.asp">媒体报道</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/about_qywh.asp">企业文化</a></td>
+                      </tr>
+                      <tr>  
+                        <td width="120"><a href="https://www.idcbest.com/about/about_khal.asp">客户案例</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/about_ryzz.asp">荣誉资质</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/about_lxwm.asp">联系我们</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/about_rcfz.asp">人才引进</a></td>
+                      </tr>
+                      <tr>  
+                        <td width="120"><a href="https://www.idcbest.com/about/about_xzfl.asp">薪资福利</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/2016/">活动专题</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/pay1.asp">付款方式</a></td>
+                        <td width="120"><a href="https://www.idcbest.com/about/pay1.asp">购买流程</a></td>
+                      </tr>
+                      
+                    </tbody></table>
+                    </div>
+                    <div class="xlme_rf">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="4" class="lsrf_tle">关注我们</td>
+                      </tr>
+                    </tbody></table>
+                    	<div class="xlme_wx"><p><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/idx_erwm.jpg" width="90" height="90"></p><p class="xlme_wxtx"><span>微信扫一扫</span> <span>关注<b>"天下数据"</b></span><span>商品一律<b>九折</b></span></p></div>
+                    	<div class="xlme_wb"><p><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlwbo.png" width="49" height="39"></p><p><span>搜索<b>"朗玥科技"</b></span><span>关注，了解最新优惠</span></p></div>
+                    
+                    </div>
+                    
+                  </li>
+                    <li>
+                    <table class="xl_khal_lst" width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tbody><tr>
+                        <td colspan="11" class="lsrf_tle"><a href="https://www.idcbest.com/about/about_khal.asp">客户案例分享</a></td>
+                      </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_7.png" alt="光大银行"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_7.png"></a></td>                
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_3.png" alt="中国平安"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_3.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_5.png" alt="京东"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_5.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_20.png" alt="中国能源"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_20.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_65.png" alt="oppo"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_65.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_66.png" alt="中国石化"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_66.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                      </tr>
+                     <tr>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_13.png" alt="西部数据"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_13.png"></a></td>                     
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_12.png" alt="申通快递"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_12.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_14.png" alt="沙河股份"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_14.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_15.png" alt="康佳"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_15.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_67.png" alt="创维"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_67.png"></a></td>
+                     <td width="1" height="74" style="background:none"></td>   
+                     <td width="158" height="74"><a href="https://www.idcbest.com/about/about_khal.asp"><img class="khlo_1" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/xlhs_khal_16.png" alt="卡西欧"><img class="khlo_2" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/khal_log_ys_16.png"></a></td>
+                     </tr>
+                      <tr><td colspan="11" height="1" style="background:none"></td></tr>
+                    </tbody></table>
+                  </li>                
+                </ul>
+                </div>
+            </div>
+        </div>
+     </div>
+                     </li>
+                    </ul>
+            <div class="clear"></div>
+              </div>
+                <div class="meu_rf">
+                	<div class="meu_zcbox" style="display: block;"><a href="https://m.idcbest.hk/register.php" class="meu_zc">注册</a><a href="https://m.idcbest.hk/clientarea.php">登录</a>|<a href="https://m.idcbest.hk/submitticket.php" class="meu_fwd">提交服务单</a></div>
+                	<div class="meu_zc400" style="display: none;"><a href="tel:4006388808" class="meu_400">400-638-8808</a><a href="https://m.idcbest.hk/register.php" class="meu_zc">注册</a><a href="https://m.idcbest.hk/clientarea.php">登录</a></div>
+              </div>
+            <div class="clear"></div>
+            </div>
+        </div>
+     
+    </div>
+<script type="text/javascript" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/idxnew.js"></script>
+
+
+<!-------头部开始------------>
+<!-- 导航结束 -->
+<!--面包屑导航开始-->
+<div class="all">
+<div class="breadcrumbs">当前位置：<a href="https://www.idcbest.com/">首页</a> &gt; <a href="https://www.idcbest.com/servernews/">服务器问题</a>  &gt; 基于国外服务器搭建自己的VPN详细教程</div>
+
+<!--面包屑导航结束-->
+
+<div class="both">
+ <!--left-->
+ 
+   	<div class="ny_right float_l">
+        	<div class="ym_news_top"><span><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/service02.jpg" alt="天下数据客服中心"></span></div>
+        	<div class="fuwu_l">
+            	
+                	
+<style>
+#pageGro .yahoo2{
+	margin:0 0 10px;
+	padding:0;
+
+}
+</style>
+
+<ul id="leftnav">
+<li><a class="lm1" href="https://www.idcbest.com/webnews/" title="本站公告">· 本站公告</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/idcnews/" title="行业新闻">· 行业新闻</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/servernews/" title="服务器问题">· 服务器问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/datanews/" title="美国服务器问题">· 美国服务器问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/cloundnews/" title="云主机问题">· 云主机问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/jjfanews/" title="解决方案问题">· 解决方案问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/recordnews/" title="备案相关问题">· 备案相关问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/domainnews/" title="域名相关问题">· 域名相关问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/emailnews/" title="邮箱相关问题">· 邮箱相关问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/hostnews/" title="虚拟主机问题">· 虚拟主机问题</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/news/" title="往期公告">· 往期公告</a></li>
+<li><a class="lm1" href="https://www.idcbest.com/article/" title="往期新闻">· 往期新闻</a></li>
+								
+</ul>  
+
+
+<p>&nbsp;</p>
+           <div class="news-list clear_ly_news" id="news-list">
+             <h3>美国服务器优惠信息</h3>
+			<div><span><a href="https://www.idcbest.com/server/server_jz.asp"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/06.jpg" alt="美国服务器租用" style="margin:0"></a></span></div>
+            </div>
+
+           <div class="news-list clear_ly_news" id="news-list">            
+             <h3>香港服务器优惠信息</h3>
+			<div><span><a href="https://www.idcbest.com/2016/march.asp" target="_blank"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/07.jpg" alt="香港服务器租用" style="margin:0"></a></span></div>
+            </div>            
+                     
+           <div class="news-list clear_ly_news" id="news-list">
+				<h3>最新新闻</h3>
+				<ul>
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-1.gif"> <a href="https://www.idcbest.com/webnews/11004929.html">55元抢爆款云服务器</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-2.gif"> <a href="https://www.idcbest.com/webnews/11004912.html">天下数据香港服务器大放价，年付最...</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-3.gif"> <a href="https://www.idcbest.com/webnews/11004901.html">天下数据荣获“大数据平台机房运行...</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-4.gif"> <a href="https://www.idcbest.com/webnews/11004900.html">天下数据荣获“大数据智能配电网信...</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-5.gif"> <a href="https://www.idcbest.com/webnews/11004899.html">天下数据荣获“机房数据库后台管理...</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-6.gif"> <a href="https://www.idcbest.com/webnews/11004898.html">天下数据荣获“数据中心智能云资源...</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-7.gif"> <a href="https://www.idcbest.com/webnews/11004897.html">天下数据荣获“机房大数据运行安全...</a></li>
+				
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-8.gif"> <a href="https://www.idcbest.com/webnews/11004866.html">天下数据阿里云香港大带宽服务器火...</a></li>
+				
+					
+				</ul>
+			</div>
+
+			<div class="news-list clear_ly_news" id="news-hot">
+				<h3><span>热门问题</span></h3>
+				<ul>
+				
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/idcnews/11003831.html">国内有合法的VPN吗,有什么VP...</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/idcnews/11001716.html">最新最好用的五个付费VPN服务推...</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/cloundnews/11001826.html">利用海外vps服务器搭建VPN教...</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/idcnews/11000194.html">5个好用的日本vpn服务器</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/idcnews/11000459.html">终身免费VPN！提供超多国家连线...</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/idcnews/11001729.html">19寸机柜标准尺寸是多少？标准机...</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/emailnews/11000052.html">如何改变你的SMTP端口来允许发...</a></li>
+					
+					
+					<li><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/li-bg.gif"> <a href="https://www.idcbest.com/emailnews/11000347.html">如何避免自己电子邮件地址被人黑？</a></li>
+					
+					
+				</ul>
+			</div>
+            </div>
+         
+        </div>
+ 
+     
+<!--right-->
+				
+        <div class="fuwu_r">
+
+
+			<div class="title">
+    <h1>基于国外服务器搭建自己的VPN详细教程</h1>
+    <div class="article_info"><span>作者：admin</span><span>来源：天下数据</span><span>2020/1/2  </span><span>浏览次数：33238</span></div>
+
+ </div>
+  <div class="title title_ov">
+<div class="en_gjz">
+<p>
+<a style="background:#ff5b5b;" target="_blank" href="https://www.idcbest.com/2019/zq_gq.asp" rel="nofollow">高防CDN套餐</a> 
+<a style="background:#e958b7;" target="_blank" href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" rel="nofollow">高防IP（50G）</a><a style="background:#567ff4;" target="_blank" href="https://www.idcbest.com/server/" rel="nofollow">香港服务器租用</a>
+<a style="background:#f90;" target="_blank" href="https://www.idcbest.com/server/server_jz.asp" rel="nofollow">美国服务器租用</a>
+<a style="background:#3fc192;" target="_blank" href="https://www.idcbest.com/server/server_xjp.asp" rel="nofollow">海外服务器租用</a>
+<a style="background:#42b8f5;" target="_blank" href="https://www.idcbest.com/2018/ssl.asp" rel="nofollow">Https证书</a>
+<a style="background:#ebbb47;" target="_blank" href="https://www.idcbest.com/vps/" rel="nofollow">云主机</a>
+</p>
+</div>
+</div>   
+ 			<div class="con" style="overflow:hidden">
+   
+	
+	<p>很多工作上生活上我们都需要翻墙，但是现在的第三方各种原因都不那么好用了，这里天下数据小编就来跟大家分享下如何利用海外服务器搭建自己私人VPN。</p>
+<p>首先这个方法不是免费的哦</p>
+<p><strong>第一步：</strong>你需要有一台<a href="https://www.idcbest.com/">国外的服务器</a>，或者香港服务器也可以；云服务平台有很多，如果只是单纯的搭建VPN，可以买便宜的服务器。</p>
+<p><strong>第二步：</strong>服务器配置，安装Shadowsocks Server</p>
+<p>1、执行如下命令</p>
+<p><span style="color: rgb(255, 0, 0);">wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh</span></p>
+<p>2、上面的命令执行结束后，执行下面的命令</p>
+<p><span style="color: rgb(255, 0, 0);">chmod +x shadowsocks-all.sh</span></p>
+<p>3、上面的命令执行结束后，执行下面的命令</p>
+<p><span style="color: rgb(255, 0, 0);">./shadowsocks-all.sh 2&gt;&amp;1| tee shadowsocks-all.log</span></p>
+<p>4、执行上述命令会有相关输入提示操作；根据需要选择。不明白的话就直接选1或者直接默认回车；之后会提示你输入密码和端口，对应设置即可，或者直接使用默认的；由于 iPhone端的wingy目前只支持到cfb，所以加密方式选择aes-256-cfb也就是选择7；全部执行完成之后就会出现如下信息：</p>
+<p><span style="color: rgb(255, 0, 0);">StartingShadowsocks success</span></p>
+<p><span style="color: rgb(255, 0, 0);">Congratulations, Shadowsocks-Python server install completed!</span></p>
+<p><span style="color: rgb(255, 0, 0);">YourServer IP&nbsp; &nbsp; &nbsp; &nbsp; :&nbsp; 你的IP</span></p>
+<p><span style="color: rgb(255, 0, 0);">YourServerPort:&nbsp; 在第四步提示设置的端口号</span></p>
+<p><span style="color: rgb(255, 0, 0);">YourPassword:&nbsp; 在第四步提示设置的密码</span></p>
+<p><span style="color: rgb(255, 0, 0);">YourEncryptionMethod:&nbsp; aes-256-cfb</span></p>
+<p><span style="color: rgb(255, 0, 0);">Your QR Code: (ForShadowsocksWindows, OSX, Androidand iOS clients)</span></p>
+<p><span style="color: rgb(255, 0, 0);">&nbsp;ss://YWVzLTI1Ni1jZmI6emh1aTA4MTA0MTJaaaccuMjmmLjU1LjE5MTo4tdVg4</span></p>
+<p><span style="color: rgb(255, 0, 0);">Your QR Code has been saved as a PNG file path:</span></p>
+<p><span style="color: rgb(255, 0, 0);">/root/shadowsocks_python_qr.png</span></p>
+<p><span style="color: rgb(255, 0, 0);">Welcome to visit: https://teddysun.com/486.html</span></p>
+<p><span style="color: rgb(255, 0, 0);">Enjoy it!</span></p>
+<p>5、看到以上信息就说明安装完成了，然后根据不同的终端设备进行设置就可以了</p>
+<p><strong>第三步、使用Shadowsocks终端体验VPN</strong></p>
+<p>1、下载对应客户端</p>
+<p>Windows：https://github.com/shadowsocks/shadowsocks-windows/releases</p>
+<p>Mac：https://github.com/yangfeicheung/Shadowsocks-X/releases</p>
+<p>Android：https://github.com/shadowsocks/shadowsocks-android/releases</p>
+<p>iPhone：App Store上下载ShadowLink，这个要用国外appid才可以下载哦。国内的搜不到的，因为shadowrocket收费的</p>
+<p>2、配置Shadowsocks</p>
+<p>windows</p>
+<p>下载之后运行就会看到右下角有小飞机，然后右键编辑服务器；对应的服务器地址、端口、密码、加密方式就是第二步中4步骤中看到的信息，对应填写确定即可；</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020003.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="515" height="389"></p>
+<p>见证奇迹的时刻到了浏览器打开https://www.google.com/</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020004.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="515" height="264" style="text-align: center;"></p>
+<p>android手机</p>
+<p>安装好上面对应的客户端如下图左边的填写对应的服务ip、端口、密码、加密方式然后保存；然后点击中间图下面的小飞机，看到手机上面有个钥匙的就是成功了，然后你就可以用浏览器访问Google嘞</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020005.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="500" height="1070" style="text-align: center;"></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020006.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="500" height="1070"></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020007.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="500" height="1070"></p>
+<p>iPhone手机</p>
+<p>安装好上面对应的客户端如左边图点击添加线路，然后是中间图填写对应的服务ip、端口、密码、加密方式然后保存，之后点击左图的开关按钮；看到手机上出现vpn的图标就成功了，可以随心所欲看视频了。</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020008.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="500" height="889" style="text-align: center;"></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/202001020009.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="500" height="889"></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/2020010200010.jpg" alt="基于国外服务器搭建自己的VPN-天下数据" width="500" height="889"></p>
+<p>以上就是全部步骤了，赶快去制作属于你们自己的梯子吧！（声明：教程仅供参考；请勿用于任何违法行为；）在此声明：天下数据没有vpn，也不出售vpn，请勿咨询！</p>
+    <p style="color:#8f8f8f;font-size:10px;">&nbsp;&nbsp;本文地址：https://www.idcbest.com/servernews/11004289.html</p>  
+ <script>
+document.writeln('<p style="color:#8f8f8f;font-size: 10px; ">&nbsp;&nbsp;部分内容、图片来源于互联网，如有侵权请联系删除，QQ：<a href="https://wpa.qq.com/msgrd?v=3&uin=228866015&site=qq&menu=yes" target="_blank" rel="nofollow" style="color:#8f8f8f;font-size: 10px; ">228866015</a></p>')
+</script><p style="color:#8f8f8f;font-size: 10px; ">&nbsp;&nbsp;部分内容、图片来源于互联网，如有侵权请联系删除，QQ：<a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228866015&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow" style="color:#8f8f8f;font-size: 10px; ">228866015</a></p>
+  
+    <div style="width:190px; margin:0 auto; margin-top:10px; float:right;">
+<div class="bdsharebuttonbox"><a href="https://www.idcbest.com/servernews/11004289.html#" class="bds_more" data-cmd="more"></a><a href="https://www.idcbest.com/servernews/11004289.html#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="https://www.idcbest.com/servernews/11004289.html#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="https://www.idcbest.com/servernews/11004289.html#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="https://www.idcbest.com/servernews/11004289.html#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="https://www.idcbest.com/servernews/11004289.html#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='https://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=+~(-new Date()/36e5)'];</script>
+</div>
+  </div>
+
+<hr>
+	<div class="news-page-menu">
+		<p><strong>上一篇 ：</strong><a href="https://www.idcbest.com/servernews/11004280.html">国内游戏出海首选香港服务器租用</a></p><p><strong>下一篇 ：</strong><a href="https://www.idcbest.com/servernews/11004308.html">香港便宜服务器怎样租用,哪里买的到？</a></p>
+
+	</div>
+	<hr>
+	<div class="news-recommand clear_ly_news">
+		<h3>相关推荐 ：</h3>
+		<ul>
+		<li><a href="https://www.idcbest.com/idcnews/11000194.html">5个好用的日本vpn服务器</a></li><li><a href="https://www.idcbest.com/idcnews/11000216.html">荷兰vpn</a></li><li><a href="https://www.idcbest.com/idcnews/11000228.html">企业租用VPN代理服务器怎么选择？</a></li><li><a href="https://www.idcbest.com/idcnews/11000428.html">知名好用国外服务器推荐</a></li><li><a href="https://www.idcbest.com/idcnews/11000430.html">如何租用国外服务器？</a></li><li><a href="https://www.idcbest.com/idcnews/11000431.html">服务器在国外，如何提高国外服务器访问速度？</a></li><li><a href="https://www.idcbest.com/idcnews/11000459.html">终身免费VPN！提供超多国家连线支援Chrome、Firefox、Opera 三大浏览器</a></li><li><a href="https://www.idcbest.com/idcnews/11000507.html">选择好用vpn应该考虑的因素</a></li>
+		
+		</ul>
+	</div>
+	
+	<div class="news-recommand clear_ly_news">
+		<h3>热门推荐 ：</h3>
+		<ul>
+		<li><a href="https://www.idcbest.com/jjfanews/11004660.html">电商直播带货平台APP搭建解决方案</a></li><li><a href="https://www.idcbest.com/servernews/11004609.html">租用中国台湾服务器开拓东南亚市场</a></li><li><a href="https://www.idcbest.com/idcnews/11002067.html">区块链安全保卫战打响，如何保护数字货币？</a></li><li><a href="https://www.idcbest.com/servernews/11001457.html">国内免备案服务器解决域名被墙,被屏蔽问题</a></li><li><a href="https://www.idcbest.com/cloundnews/11003419.html">如何通过动态拨号vps服务器解决爬虫反爬和IP被封问题</a></li><li><a href="https://www.idcbest.com/servernews/11000825.html">香港服务器带宽怎么样？</a></li><li><a href="https://www.idcbest.com/servernews/11003468.html">大陆高防服务器如何租用哪家好</a></li><li><a href="https://www.idcbest.com/cloundnews/11003481.html">如何通过动态VPS代理IP保证爬虫程序稳定运行?</a></li>
+		</ul>
+	</div>
+
+
+     </div>
+</div>
+<!--both-->
+
+
+<div class="black10"></div>
+
+</div>
+<!-----底部开始-------->
+<div class="hokg_foot" style="background:#FFF;">
+
+<div class="Special">
+    <div class="w_1q">
+      <dl>
+        <dd>专题活动：</dd>
+        <dt>
+          <div id="FontScroll">
+    <ul class="line" style="margin-top: -30px;">
+      <li><a href="https://www.idcbest.com/subject/hkzhuanti.htm" target="_blank">香港服务器专题  </a>
+        <a href="https://www.idcbest.com/subject/haiwai.htm" target="_blank">海外服务器专题  </a>
+        <a href="https://www.idcbest.com/subject/jiejuefanganzt.html" target="_blank">服务器解决方案专题  </a>     
+        <a href="https://www.idcbest.com/subject/server-yz.asp" target="_blank">亚洲服务器专题 </a>
+        <a href="https://www.idcbest.com/subject/server-oz.asp" target="_blank">欧洲服务器专题 </a>
+        <a href="https://www.idcbest.com/subject/server-mz.asp" target="_blank">美洲服务器专题 </a>
+       
+        </li> 
+        <li class=""><a href="https://www.idcbest.com/subject/quanqiuzt.html" target="_blank">全球服务器介绍专题 </a>
+        <a href="https://www.idcbest.com/subject/quanqiuyunzt.html" target="_blank">全球云主机专题 </a>
+        <a href="https://www.idcbest.com/subject/" target="_blank">服务器专题汇总 </a>
+        <a href="https://www.idcbest.com/servernews/" target="_blank">服务器问题 </a>
+        <a href="https://www.idcbest.com/domainnews/" target="_blank">域名问题集锦 </a>
+        <a href="https://www.idcbest.com/hostnews/" target="_blank">虚拟主机问题集锦 </a>   
+        </li>          
+        <li class="fontColor">
+       <a href="https://www.idcbest.com/subject/server-fz.asp" target="_blank">非洲服务器专题 </a>
+       <a href="https://www.idcbest.com/datanews/" target="_blank">美国服务器问题 </a>
+       <a href="https://www.idcbest.com/recordnews/" target="_blank">备案相关问题 </a>
+       <a href="https://www.idcbest.com/cloundnews/" target="_blank">云主机问题</a>
+       <a href="https://www.idcbest.com/2016/" target="_blank">天下数据活动专题汇总</a> 
+      </li>
+    </ul><ul class="line">
+      <li class=""><a href="https://www.idcbest.com/subject/hkzhuanti.htm" target="_blank">香港服务器专题  </a>
+        <a href="https://www.idcbest.com/subject/haiwai.htm" target="_blank">海外服务器专题  </a>
+        <a href="https://www.idcbest.com/subject/jiejuefanganzt.html" target="_blank">服务器解决方案专题  </a>     
+        <a href="https://www.idcbest.com/subject/server-yz.asp" target="_blank">亚洲服务器专题 </a>
+        <a href="https://www.idcbest.com/subject/server-oz.asp" target="_blank">欧洲服务器专题 </a>
+        <a href="https://www.idcbest.com/subject/server-mz.asp" target="_blank">美洲服务器专题 </a>
+       
+        </li> 
+        <li class=""><a href="https://www.idcbest.com/subject/quanqiuzt.html" target="_blank">全球服务器介绍专题 </a>
+        <a href="https://www.idcbest.com/subject/quanqiuyunzt.html" target="_blank">全球云主机专题 </a>
+        <a href="https://www.idcbest.com/subject/" target="_blank">服务器专题汇总 </a>
+        <a href="https://www.idcbest.com/servernews/" target="_blank">服务器问题 </a>
+        <a href="https://www.idcbest.com/domainnews/" target="_blank">域名问题集锦 </a>
+        <a href="https://www.idcbest.com/hostnews/" target="_blank">虚拟主机问题集锦 </a>   
+        </li>          
+        <li>
+       <a href="https://www.idcbest.com/subject/server-fz.asp" target="_blank">非洲服务器专题 </a>
+       <a href="https://www.idcbest.com/datanews/" target="_blank">美国服务器问题 </a>
+       <a href="https://www.idcbest.com/recordnews/" target="_blank">备案相关问题 </a>
+       <a href="https://www.idcbest.com/cloundnews/" target="_blank">云主机问题</a>
+       <a href="https://www.idcbest.com/2016/" target="_blank">天下数据活动专题汇总</a> 
+      </li>
+    </ul>
+    </div>
+   
+        </dt>
+      </dl>
+    </div>
+  </div>
+
+
+  <!--  底部导航链接部分  -->
+  <div class="last_nav">
+    <div class="w_1q">
+      <ul>
+        <li>
+          <p>产品与服务</p>
+          <p><a href="https://www.idcbest.com/server/">香港服务器</a></p>
+          <p><a href="https://www.idcbest.com/server/server_bk.asp">香港高防服务器</a></p>         
+          <p><a href="https://www.idcbest.com/server/server_jz.asp">美国服务器</a></p>
+          <p><a href="https://www.idcbest.com/server/server_hg.asp">韩国服务器</a></p>
+          <p><a href="https://www.idcbest.com/server/server_xjp.asp">新加坡服务器</a></p>
+          <p><a href="https://www.idcbest.com/server/server_rb.asp">日本服务器</a></p>
+          <p><a href="https://www.idcbest.com/server/server_tw.asp">台湾服务器</a></p>
+        </li>
+        <li>
+          <p>云服务器</p>
+           <p><a href="https://www.idcbest.com/vps/vps_xg.asp">香港云主机</a></p>
+           <p><a href="https://www.idcbest.com/vps/vps_mg.asp">美国云主机</a></p>
+           <p><a href="https://www.idcbest.com/vps/vps_hg.asp">韩国云主机</a></p>          
+           <p><a href="https://www.idcbest.com/vps/vps_xjp.asp">新加坡云主机</a></p>
+           <p><a href="https://www.idcbest.com/vps/vps_tw.asp">台湾云主机</a></p>
+           <p><a href="https://www.idcbest.com/vps/vps_rb.asp">日本云主机</a></p>
+           <p><a href="https://www.idcbest.com/vps/vps_dg.asp">德国云主机</a></p>
+           <p><a href="https://www.idcbest.com/vps/quanqiuyun.asp">全球云主机</a></p>            
+        </li>
+        <li>
+          <p>高防专线</p>
+           <p><a href="https://www.idcbest.com/2019/ddosIP.asp" target="_blank">海外高防IP</a></p>
+           <p><a href="https://www.idcbest.com/2016/usa_fwq/usa_fuq.asp">海外无限防御</a></p>
+           <p><a href="https://www.idcbest.com/2018/ssl.asp">SSL证书</a></p>
+           <p><a href="https://www.idcbest.com/2017/Txsjcdn.asp">全球节点定制</a></p>
+           <p><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" target="_blank">全球专线GPLC</a></p>
+           <p><a href="https://www.idcbest.com/2019/zq_gq.asp" target="_blank">高防CDN套餐</a></p>   
+        </li>
+        <li>
+          <p>关于我们</p>
+          <p><a href="https://www.idcbest.com/about/" rel="nofollow">关于天下数据</a></p>
+          <p><a href="https://www.idcbest.com/zzcp/agent.asp" rel="nofollow">数据招商加盟</a></p>
+          <p><a href="https://www.idcbest.com/about/about_khal.asp" rel="nofollow">天下数据合作伙伴</a></p>
+          <p><a href="https://www.idcbest.com/about/about_rcfz.asp" rel="nofollow">天下数据团队建设</a></p>
+          <p><a href="https://www.idcbest.com/about/about_cpyc.asp" rel="nofollow">加入天下数据</a></p>
+          <p><a href="https://www.idcbest.com/2017/mtxsj.asp" rel="nofollow">媒体报道</a></p>
+          <p><a href="https://www.idcbest.com/about/about_ryzz.asp" rel="nofollow">荣誉资质</a></p>         
+          <p><a href="https://www.idcbest.com/about/pay1.asp" rel="nofollow">付款方式</a></p>
+        </li>
+        <li>
+          <p>关注我们</p>
+         <p><a href="https://www.idcbest.com/servernews/11004289.html#" rel="nofollow">微信公众账号</a></p>
+          <p><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/ewm.jpg" alt="微信公众号二维码"></p>
+          <p><a href="https://weibo.com/idcbest" rel="nofollow">新浪微博</a></p>
+        </li>
+        <li>
+<!--          <embed src="http://player.youku.com/player.php/sid/XNjU4MTA4ODEy/v.swf" allowFullScreen="true" quality="high" width="280" height="190" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" style="box-shadow:1px 2px 2px #333"></embed> 
+-->       <div class="bot_murf">
+        	<div class="botm_vido" style="width:340px; height:225px; overflow:hidden;">
+        <div class="main" style="width:340px; height:215px;background: url(images/bozx_zf_34.png) no-repeat center top;">
+                    <a href="javascript:;" class="video" id="video" style="display:block; width:100%; height:215px;">
+                 <video loop="" controls="" reset="false" name="media" style="width:100%"> 
+        <source src="https://www.idcbest.hk/2017/video/longoray.mp4" type="video/mp4"></video>
+                    </a>
+                </div>        
+        </div>
+
+        </div></li>
+      </ul>
+    </div>
+  </div>
+ <div style="height:10px;"></div>
+ <!-------底部开始------------>
+ <div class="bottom" style="height:auto;">
+    <div class="w_1q">
+    <p style="font-size:12px;color: #666;">
+    <a href="https://www.idcbest.com/" title="天下数据">天下数据</a>15年专注海外<a href="https://www.idcbest.com/" title="美国服务器">美国服务器</a>|<a href="https://www.idcbest.com/server/" title="香港服务器">香港服务器</a>|<a href="https://www.idcbest.com/vps/" title="云主机">云主机</a>|<a href="https://www.idcbest.com/host/" title="虚拟主机租用">虚拟主机租用</a>托管以及<a href="https://www.idcbest.com/solution/solution8.asp" title="服务器解决方案">服务器解决方案</a>-做天下最好的IDC服务商</p>
+      <p class="dh">
+      <a href="https://www.idcbest.com/about/" rel="nofollow" target="_blank">关于我们</a>
+      <a href="https://www.idcbest.com/about/about_lxwm.asp" rel="nofollow" target="_blank">联系我们</a>
+      <a href="https://www.idcbest.com/about/about_cpyc.asp" rel="nofollow" target="_blank">诚聘英才</a>
+      <a href="https://www.idcbest.com/about/pay1.asp" rel="nofollow" target="_blank">付款方式</a>
+      <a href="https://www.idcbest.com/help/" rel="nofollow" target="_blank">帮助中心</a>
+      <a href="https://www.idcbest.com/recordnews/" rel="nofollow" target="_blank">网站备案</a>
+      <a href="https://www.idcbest.com/solution/solution1.asp" rel="nofollow">解决方案</a>
+      <a href="https://www.idcbest.com/domain/" rel="nofollow">域名注册</a>
+      <a href="https://www.idcbest.com/sitemap.html" target="_blank" style="border:none;">网站地图</a>
+      
+      </p>
+      <p style=" width:240px; margin:0 auto; padding-left:100px;">
+            <!-- JiaThis Button BEGIN -->
+</p><div class="jiathis_style" style=" text-align:center;">
+	<a class="jiathis_button_qzone" rel="nofollow"></a>
+	<a class="jiathis_button_tsina" rel="nofollow"></a>
+	<a class="jiathis_button_tqq" rel="nofollow"></a>
+	<a class="jiathis_button_weixin" rel="nofollow"></a>
+	<a class="jiathis_button_renren" rel="nofollow"></a>
+	<a href="https://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank" rel="nofollow"></a>
+	<a class="jiathis_counter_style" rel="nofollow"></a>
+</div>
+<!-- JiaThis Button END -->
+<p></p>
+
+      <div style="clear:both; padding:20px 0px;">
+        <img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer01.jpg"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer02.jpg"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer03.jpg"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer05.jpg"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer06.jpg"><script id="ebsgovicon" src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/govicons.js" type="text/javascript" charset="utf-8"></script><a href="https://szcert.ebs.org.cn/fcb4325f-87e8-4fec-80ff-582e8466d8b8" target="_blank"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/govIcon.gif" title="深圳市市场监督管理局企业主体身份公示" alt="深圳市市场监督管理局企业主体身份公示" width="36" height="50" border="0" style="border-width:0px;border:hidden; border:none;"></a><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer08.jpg"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/footer09.jpg">
+      </div>
+    </div>
+  </div>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?341f1ab9fcdc09cc6b48e4fb87020279";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</div>
+
+<style>
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+</style>
+<!--代码部分begin-->
+<div class="suspend">
+	<dl>
+		<dt class="IE6PNG"></dt>
+		<dd class="suspendQQ"></dd>
+		<dd class="suspendTel">
+        <div class="kfbox1" id="kfbox">
+<div class="qyQQ"><p><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" target="_blank" rel="nofollow" class="qyqq_qq">企业QQ</a><a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&amp;key=XzkzODA2NDIwMV80NTAzNjZfNDAwODExOTg3OF8yXw" target="_blank" rel="nofollow" class="qyqq_djzx">点我咨询</a></p></div>
+    <div class="kfitem">
+    <ul>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228891290&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa" border="0" alt="天下数据32">&nbsp;天下数据32</a></li>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228669053&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa(1)" border="0" alt="天下数据16">&nbsp;天下数据16</a></li>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228866950&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa(2)" border="0" alt="天下数据37">&nbsp;天下数据37</a></li>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228899702&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa(3)" border="0" alt="天下数据22">&nbsp;天下数据22</a></li>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228959658&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa(4)" border="0" alt="天下数据29">&nbsp;天下数据29</a></li>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228669014&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa(5)" border="0" alt="天下数据29">&nbsp;天下数据09</a></li>
+<li class="QQonline"><a href="https://wpa.qq.com/msgrd?v=3&amp;uin=228899476&amp;site=qq&amp;menu=yes" target="_blank" rel="nofollow"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/pa(6)" border="0" alt="天下数据19">&nbsp;天下数据19</a></li>
+    </ul>
+    </div>
+   <div id="k" class="kfitem" style="margin-left:22px; margin-bottom:5px;"><p class="erweima"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/qq0_15.png" border="0"></p></div>
+   <div class="kfcall"><img src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/qyqq_pic_07.png" width="122" height="58"></div>
+</div></dd>
+	</dl>
+</div>
+
+<script type="text/javascript">           
+$(document).ready(function(){
+
+	 $(".suspend").mouseover(function() {
+        $(this).stop();
+        $(this).animate({width: 195}, 200);
+    })
+	
+    $(".suspend").mouseout(function() {
+        $(this).stop();
+        $(this).animate({width: 35}, 200);
+    });
+	
+});
+</script>
+<!--代码部分end-->
+<!--谷歌统计-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-93114203-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!---end--->
+
+
+
+
+<!-----底部结束-------->
+ 
+<script type="text/javascript" src="https://v3.jiathis.com/code/jia.js" charset="GB2312"></script>
+<script src="./基于国外服务器搭建自己的VPN详细教程-服务器问题-天下数据_files/gd.js" type="text/javascript"></script>
+<script type="text/javascript"> 
+$(document).ready(function(){
+$(".cp").mousemove(function(){
+    $(".cp_list").show();
+  });
+
+$(".jj").mousemove(function(){
+    $(".jj_list").show();
+  });
+$(".zz").mousemove(function(){
+    $(".zz_list").show();
+  });
+$(".bz").mousemove(function(){
+    $(".bz_list").show();
+  });
+$(".gy").mousemove(function(){
+    $(".gy_list").show();
+  });
+$(".sy").mousemove(function(){
+    $(".sy_list").show();
+  });
+
+$(".cp").mousemove(function(){
+    $(".gy_list,.zz_list,.jj_list,.bz_list").hide();
+  });
+  
+$(".sy").mousemove(function(){
+    $(".cp_list,.gy_list,.zz_list,.jj_list,.bz_list").hide();
+  });
+  
+$(".jj").mousemove(function(){
+    $(".gy_list,.cp_list,.zz_list,.bz_list").hide();
+  });
+$(".zz").mousemove(function(){
+    $(".gy_list,.cp_list,.jj_list,.bz_list").hide();
+  });
+$(".bz").mousemove(function(){
+    $(".gy_list,.cp_list,.jj_list,.zz_list").hide();
+  });
+$(".gy").mousemove(function(){
+    $(".zz_list,.cp_list,.jj_list,.bz_list").hide();
+  });
+  
+$(".cp_list").mouseleave(function(){
+    $(".cp_list").hide();
+  });
+
+$(".jj_list").mouseleave(function(){
+    $(".jj_list").hide();
+  }); 
+$(".zz_list").mouseleave(function(){
+    $(".zz_list").hide();
+  });   
+$(".bz_list").mouseleave(function(){
+    $(".bz_list").hide();
+  });  
+  
+$(".gy_list").mouseleave(function(){
+    $(".gy_list").hide();
+  });  
+});
+</script>
+
+ 
+  <script type="text/javascript">
+$(function(){
+    $('#FontScroll').FontScroll({time: 3000,num: 1});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  
+	$("#leftnav  li").click(function () {
+		if($(this).find("ul").css("display")=="none")
+		
+
+			$(this).find("ul").css("display", "block");
+		else
+			$(this).find("ul").css("display", "none");
+    });
+
+});
+</script>   
+
+
+
+
+<div style="position: static; display: none; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-left-top.png&quot;);"></div><div id="tip-top" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-top.png&quot;) repeat-x;"></div><div id="tip-right-top" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-right-top.png&quot;);"></div><div id="tip-right" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-right.png&quot;) repeat-y;"></div><div id="tip-right-bottom" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-right-bottom.png&quot;);"></div><div id="tip-bottom" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-bottom.png&quot;) repeat-x;"></div><div id="tip-left-bottom" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-left-bottom.png&quot;);"></div><div id="tip-left" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-left.png&quot;);"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-arrow-bottom.png&quot;);"></div><div id="tip-arrow-top" style="background: url(&quot;chrome-extension://dodigcollhkcpflanilhcefbhbagajfm/imgs/map/tip-arrow-top.png&quot;);"></div></div><div id="hm_t_undefined" class="hm-t-container"><div class="hm-t-go-top" style="display: none;"></div></div></body></html>
