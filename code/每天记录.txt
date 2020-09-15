@@ -5,4 +5,9 @@ Claim 证件单元 ClaimTypes
 ClaimsIdentity:IIdentity   身份证
 ClaimsPrincipal :IPrincipal  证件当事人
 
-057e04526abb93df0f75850c4ab2600f4d9cdcc5  vs同步设置token
+
+
+缓存：
+https://www.bilibili.com/video/BV12C4y1a7AC?from=search&seid=4713927919737985773   ————————R
+https://www.bilibili.com/video/BV1d741147KF?from=search&seid=17587681279323023462   IT编程培训 ASP.NET Core：Cache
+
